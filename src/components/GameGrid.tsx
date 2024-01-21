@@ -14,10 +14,10 @@ const GameGrid = () => {
             <SimpleGrid columns={{
                 sm: 1, md: 2, lg: 3, xl: 4
             }} padding={"10px"} spacing={10}>
-                {isLoading && skeletons.map(skeleton=> <GameCardContainer><GameCardSkeleton key={skeleton} /></GameCardContainer>) }
+                {isLoading && skeletons.map(skeleton=> <GameCardContainer key={skeleton}><GameCardSkeleton  /></GameCardContainer>) }
                 {games.map((game) => {
-                    return <GameCardContainer>
-                        <GameCard key={game.id} game={game} />
+                    return <GameCardContainer key={game.id}>
+                        <GameCard game={game} />
                     </GameCardContainer>
                 })}
             </SimpleGrid>

@@ -2,7 +2,7 @@ export interface IApiResponse {
     count: number,
     next: string,
     previous: null,
-    results: IGame[]
+    results: any
 }
 
 export interface IRating {
