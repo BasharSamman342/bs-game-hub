@@ -22,11 +22,11 @@ export interface AddedByStatus {
 }
 
 export interface IParentPlatform {
-    platform: {
+
         id: number,
         name: string,
         slug: string
-    }
+
 }
 
 export interface IGenre {
@@ -110,7 +110,9 @@ export interface IGame {
     saturated_color: string,
     dominant_color: string,
     platforms: IPlatform,
-    parent_platforms: IParentPlatform[],
+    parent_platforms: {
+        platform:IParentPlatform
+    }[],
     genres: IGenre[],
     stores: IStore[],
     clip: null,
