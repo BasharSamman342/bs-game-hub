@@ -22,11 +22,9 @@ export interface AddedByStatus {
 }
 
 export interface IParentPlatform {
-
-        id: number,
-        name: string,
-        slug: string
-
+    id: number,
+    name: string,
+    slug: string
 }
 
 export interface IGenre {
