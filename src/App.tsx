@@ -7,16 +7,21 @@ import { useState } from 'react';
 import { IGenre, IParentPlatform } from './interfaces/interfaces.ts';
 import PlatformSelector from './components/PlatformSelector.tsx';
 
+export interface QueryObject{
+  genre:IGenre|null,
+  platform:IParentPlatform|null,
+
+}
+
 function App() {
-  const [selectedGenre,setSelectedGenre] = useState<IGenre|null>(null)
-  const [selectedPlatform,setSelectedPlatform] = useState<IParentPlatform|null>(null)
+  const [query, setQuery] = useState<QueryObject>({} as QueryObject)
 
   const onSelectGenre = (genre:IGenre)=>{
-    setSelectedGenre(genre)
+    setQuery({...query,genre:genre})
   }
 
   const onSelectPlatform = (platform:IParentPlatform)=>{
-    setSelectedPlatform(platform)
+    setQuery({...query,platform:platform})
   }
 
   return (
@@ -34,12 +39,12 @@ function App() {
       </GridItem>
       <Show above='lg'>
         <GridItem area={"aside"} paddingX={5}>
-          <GenreList selectedGenre={selectedGenre} onSelectGenre={onSelectGenre} />
+          <GenreList selectedGenre={query.genre} onSelectGenre={onSelectGenre} />
         </GridItem>
       </Show>
       <GridItem area={"main"}>
-        <PlatformSelector selectedPlatform={selectedPlatform} onSelectPlatform={onSelectPlatform} />
-        <GameGrid selectedPlatform={selectedPlatform} selectedGenre={selectedGenre} />
+        <PlatformSelector selectedPlatform={query.platform} onSelectPlatform={onSelectPlatform} />
+        <GameGrid gameQuery={query} />
       </GridItem>
     </Grid>
   )
