@@ -3,11 +3,11 @@ import {IGenre} from "../interfaces/interfaces.ts";
 
 const GenreList = ()=>{
     // @ts-ignore
-    const { genres } = useGenres()
+    const { data } = useGenres()
     return (
         <ul>
             {
-                genres.map((item:IGenre)=>{
+                data.map((item:IGenre)=>{
                     return <li key={item.id}>{item.name}</li>
                 })
             }

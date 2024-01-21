@@ -1,8 +1,8 @@
-export interface IApiResponse {
+export interface IApiResponse<T> {
     count: number,
     next: string,
     previous: null,
-    results: any
+    results: T[]
 }
 
 export interface IRating {
