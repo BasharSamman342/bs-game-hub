@@ -9,7 +9,7 @@ const useData=<T>(endpoint:string)=>{
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     useEffect(() => {
-        // setIsLoading(true)
+        setIsLoading(true)
         const controller = new AbortController()
         apiClient.get<IApiResponse<T>>(endpoint, { signal: controller.signal })
             .then(res => {
