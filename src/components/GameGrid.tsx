@@ -1,22 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { IApiResponse, IGame } from '../interfaces/interfaces'
-import apiClient from '../services/api-client'
 import { Text } from '@chakra-ui/react'
+import useGames from '../hooks/useGames'
 
 const GameGrid = () => {
-    const [games, setGames] = useState<IGame[]>([])
-    const [error, setError] = useState('')
-
-    useEffect(() => {
-        const controller = new AbortController()
-        apiClient.get<IApiResponse>("games")
-            .then(res => setGames(res.data.results))
-            .catch(err => setError(err))
-
-        return () => {
-            controller.abort
-        }
-    }, [])
+    const { games, error } = useGames()
 
 
     return (
