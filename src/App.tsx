@@ -4,14 +4,19 @@ import Navbar from './components/Navbar'
 import GameGrid from './components/GameGrid'
 import GenreList from "./components/GenreList.tsx";
 import { useState } from 'react';
-import { IGenre } from './interfaces/interfaces.ts';
+import { IGenre, IParentPlatform } from './interfaces/interfaces.ts';
 import PlatformSelector from './components/PlatformSelector.tsx';
 
 function App() {
   const [selectedGenre,setSelectedGenre] = useState<IGenre|null>(null)
+  const [selectedPlatform,setSelectedPlatform] = useState<IParentPlatform|null>(null)
 
   const onSelectGenre = (genre:IGenre)=>{
     setSelectedGenre(genre)
+  }
+
+  const onSelectPlatform = (platform:IParentPlatform)=>{
+    setSelectedPlatform(platform)
   }
 
   return (
@@ -33,8 +38,8 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area={"main"}>
-        <PlatformSelector />
-        <GameGrid selectedGenre={selectedGenre} />
+        <PlatformSelector selectedPlatform={selectedPlatform} onSelectPlatform={onSelectPlatform} />
+        <GameGrid selectedPlatform={selectedPlatform} selectedGenre={selectedGenre} />
       </GridItem>
     </Grid>
   )

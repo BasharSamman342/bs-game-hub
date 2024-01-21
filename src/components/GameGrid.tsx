@@ -3,14 +3,15 @@ import useGames from '../hooks/useGames'
 import GameCard from './GameCard'
 import GameCardSkeleton from "./GameCardSkeleton.tsx";
 import GameCardContainer from "./GameCardContainer.tsx";
-import { IGenre } from '../interfaces/interfaces.ts';
+import { IGenre, IParentPlatform } from '../interfaces/interfaces.ts';
 
 interface Props{
-    selectedGenre:IGenre|null
+    selectedGenre:IGenre|null,
+    selectedPlatform:IParentPlatform|null
 }
 
-const GameGrid = ({selectedGenre}:Props) => {
-    const { data,isLoading, error } = useGames(selectedGenre)
+const GameGrid = ({selectedGenre,selectedPlatform}:Props) => {
+    const { data,isLoading, error } = useGames(selectedGenre,selectedPlatform)
     const skeletons=[1,2,3,4,5,6]
 
     return (
