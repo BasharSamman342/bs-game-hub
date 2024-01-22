@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { IGenre, IParentPlatform } from './interfaces/interfaces.ts';
 import PlatformSelector from './components/PlatformSelector.tsx';
 import SortSelector from './components/SortSelector.tsx';
+import GameHeading from './components/GameHeading.tsx';
 
 export interface QueryObject{
   genre:IGenre|null,
@@ -53,12 +54,15 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area={"main"}>
-        <Flex  paddingLeft={2} marginBottom={5}>
-          <Box marginRight={5}>
-            <PlatformSelector selectedPlatform={query.platform} onSelectPlatform={onSelectPlatform} />
-          </Box>
-          <SortSelector selectedSortOrder={query.sortOrder} onSelectSortOrder={onSelectSortOrder}/>
-        </Flex>
+        <Box paddingLeft={2}>
+          <GameHeading gameQuery={query} />
+          <Flex marginBottom={5}>
+            <Box marginRight={5}>
+              <PlatformSelector selectedPlatform={query.platform} onSelectPlatform={onSelectPlatform} />
+            </Box>
+            <SortSelector selectedSortOrder={query.sortOrder} onSelectSortOrder={onSelectSortOrder}/>
+          </Flex>
+        </Box>
         <GameGrid gameQuery={query} />
       </GridItem>
     </Grid>
