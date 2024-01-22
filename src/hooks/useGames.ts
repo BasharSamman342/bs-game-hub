@@ -9,6 +9,7 @@ const useGames = (gameQuery:QueryObject) => useData<IGame>("games",
     {
         genres:gameQuery.genre?.id,
         platforms:gameQuery.platform?.id,
-        ordering:gameQuery.sortOrder
+        ordering:gameQuery.sortOrder,
+        search:gameQuery.searchText
     }},[gameQuery])
 export default useGames

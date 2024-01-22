@@ -11,7 +11,8 @@ import SortSelector from './components/SortSelector.tsx';
 export interface QueryObject{
   genre:IGenre|null,
   platform:IParentPlatform|null,
-  sortOrder:string
+  sortOrder:string,
+  searchText:string
 }
 
 function App() {
@@ -26,9 +27,11 @@ function App() {
   }
 
   const onSelectSortOrder = (sortOrder:string)=>{
-    console.log(sortOrder);
-    
     setQuery({...query,sortOrder:sortOrder})
+  }
+
+  const onSearch = (searchText:string)=>{
+    setQuery({...query,searchText:searchText })
   }
 
   return (
@@ -42,7 +45,7 @@ function App() {
     }}
     >
       <GridItem area={"nav"} >
-        <Navbar />
+        <Navbar onSearch={onSearch} />
       </GridItem>
       <Show above='lg'>
         <GridItem area={"aside"} paddingX={5}>
